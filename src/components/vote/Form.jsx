@@ -111,7 +111,7 @@ export const Form = ({ id, driver_name, closeModal }) => {
   useEffect(() => {
     const getCountries = async () => {
       const options = {
-        headers: { "X-CSCAPI-KEY": process.env.REACT_APP_COUNTRY_API_KEY },
+        headers: { "X-CSCAPI-KEY": `${import.meta.env.VITE_COUNTRY_API_KEY }`},
       };
       try {
         const res = await axios(
@@ -140,7 +140,7 @@ export const Form = ({ id, driver_name, closeModal }) => {
     if (country_iso) {
       const getRegions = async () => {
         const options = {
-          headers: { "X-CSCAPI-KEY": process.env.REACT_APP_COUNTRY_API_KEY },
+          headers: { "X-CSCAPI-KEY": import.meta.env.VITE_COUNTRY_API_KEY },
         };
 
         try {
@@ -173,7 +173,7 @@ export const Form = ({ id, driver_name, closeModal }) => {
       const getCountryLocation = async () => {
         try {
           const options = {
-            headers: { "X-CSCAPI-KEY": process.env.REACT_APP_COUNTRY_API_KEY },
+            headers: { "X-CSCAPI-KEY": import.meta.env.VITE_COUNTRY_API_KEY },
           };
           const res = await axios(
             `https://api.countrystatecity.in/v1/countries/${country_iso}`,
@@ -210,7 +210,7 @@ export const Form = ({ id, driver_name, closeModal }) => {
       const getRegionLocation = async () => {
         try {
           const options = {
-            headers: { "X-CSCAPI-KEY": process.env.REACT_APP_COUNTRY_API_KEY },
+            headers: { "X-CSCAPI-KEY": import.meta.env.VITE_COUNTRY_API_KEY },
           };
           const res = await axios(
             `https://api.countrystatecity.in/v1/countries/${country_iso}/states/${region_iso}`,
@@ -247,7 +247,7 @@ export const Form = ({ id, driver_name, closeModal }) => {
       const getCities = async () => {
         try {
           const options = {
-            headers: { "X-CSCAPI-KEY": process.env.REACT_APP_COUNTRY_API_KEY },
+            headers: { "X-CSCAPI-KEY": import.meta.env.VITE_COUNTRY_API_KEY },
           };
           const res = await axios(
             `https://api.countrystatecity.in/v1/countries/${country_iso}/states/${region_iso}/cities`,
