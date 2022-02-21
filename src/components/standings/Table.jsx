@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchStats } from '../redux/actions/fetchStats';
+import retiredDrivers from "../../data/retiredDrivers";
 import dataTeams from '../../data/data_teams.json';
 import dataDrivers from '../../data/data_drivers.json';
 class Table extends Component {
@@ -41,8 +42,10 @@ class Table extends Component {
     }
   };
 
+  
   render() {
-    const driversItems = this.props.drivers.drivers.map((driver, idx) => (
+    const filteredDrivers = this.props.drivers.drivers.filter((el) => !retiredDrivers.includes(el.Driver.driverId))
+    const driversItems = filteredDrivers.map((driver, idx) => (
       <>
         <tr key={idx}>
           <th scope="row" className="text-center">

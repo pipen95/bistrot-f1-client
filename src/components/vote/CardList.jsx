@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchStats } from "../redux/actions/fetchStats";
+import retiredDrivers from "../../data/retiredDrivers";
 import CardItem from "./CardItem";
 
 class CardList extends Component {
@@ -25,7 +26,8 @@ class CardList extends Component {
   }
 
   render() {
-    const driversItems = this.props.drivers.drivers.map((driver, idx) => (
+    const filteredDrivers = this.props.drivers.drivers.filter((el) => !retiredDrivers.includes(el.Driver.driverId));
+    const driversItems = filteredDrivers.map((driver, idx) => (
       <CardItem
         stats={driver}
         driver={driver.Driver}
