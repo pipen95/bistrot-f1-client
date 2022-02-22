@@ -23,7 +23,6 @@ export const Login = ({closeModal }) => {
 
   const handleValidation = (data) => {
     let fields = data;
-    let errors = {};
     let formIsValid = true;
 
     //Name
@@ -63,7 +62,7 @@ export const Login = ({closeModal }) => {
       }
     }
 
-    this.setErrors({ errors: errors });
+    setErrors({ errors: errors });
     return formIsValid;
   }
 
@@ -127,6 +126,7 @@ export const Login = ({closeModal }) => {
                 <fieldset className="form-group" disabled={submitting}>
                   <label htmlFor="email">Email</label>
                   <input
+                    ref={email}
                     type="text"
                     id="email"
                     className="form-control"
@@ -138,6 +138,7 @@ export const Login = ({closeModal }) => {
                 <fieldset className="form-group" disabled={submitting}>
                   <label htmlFor="password">Password</label>
                   <input
+                    ref={password}
                     type="text"
                     id="password"
                     className="form-control"
