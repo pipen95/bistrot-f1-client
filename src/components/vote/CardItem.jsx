@@ -55,20 +55,9 @@ class CardItem extends Component {
                 className="py-1 px-2 align-self-center btn"
                 onClick={this.handleClick}
               >
-                Stats
+                Make prediction 
               </Badge>
-              <Badge
-                pill
-                variant="light"
-                className="py-1 px-2 align-self-center btn vote-btn"
-              >
-              <ModalContainer
-                id={this.props.driver.driverId}
-                name={`${this.props.driver.GivenName} ${this.props.driver.FamilyName}`}
-                triggerText="Rate him!"
-                path="vote"
-              />
-              </Badge>
+             
             </Card.Text>
           </Card.Body>
         </Card>
@@ -82,18 +71,18 @@ class CardItem extends Component {
             <Card.Text className="text-white">
               Season: {new Date().getFullYear()}
             </Card.Text>
-            <Card.Text className="text-white">
-              Team: {this.props.constructor.Name}
-            </Card.Text>
-            <Card.Text className="text-white">
-              Ranking: {this.props.stats.position}
-            </Card.Text>
-            <Card.Text className="text-white">
-              Wins: {this.props.stats.wins}
-            </Card.Text>
-            <Card.Text className="text-white">
-              Points: {this.props.stats.points}
-            </Card.Text>
+            <Badge
+                pill
+                variant="light"
+                className="py-1 px-2 align-self-center btn vote-btn"
+              >
+              <ModalContainer
+                id={this.props.driver.driverId}
+                name={`${this.props.driver.GivenName} ${this.props.driver.FamilyName}`}
+                triggerText="Rate him!"
+                path="vote"
+              />
+              </Badge>
             <Badge
               pill
               variant="light"
