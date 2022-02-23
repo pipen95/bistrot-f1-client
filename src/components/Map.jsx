@@ -1,6 +1,6 @@
-import React, { useRef, useEffect, useState } from "react";
-import axios from "axios";
-import mapboxgl from "mapbox-gl";
+import React, { useRef, useEffect, useState } from 'react';
+import axios from 'axios';
+import mapboxgl from 'mapbox-gl';
 
 function Map() {
   const mapContainer = useRef(null);
@@ -14,7 +14,7 @@ function Map() {
     if (_isMounted.current) {
       const getLocations = async () => {
         try {
-          const res = await axios("http://localhost:3001/api/v1/votes");
+          const res = await axios('http://localhost:3001/api/v1/votes');
           if (res) {
             return setVotes(res.data.data.votes);
           }
@@ -39,9 +39,9 @@ function Map() {
       try {
         map.current = new mapboxgl.Map({
           container: mapContainer.current,
-          style: "mapbox://styles/mapbox/navigation-night-v1",
+          style: 'mapbox://styles/mapbox/navigation-night-v1',
           accessToken:
-            "pk.eyJ1IjoicGllcnJlOTUxNzAiLCJhIjoiY2toMWNtMXM5MDBzazM0bzVtcWk5YTN0OCJ9.1piZsy79X9rKgXGywRU9bQ",
+            'pk.eyJ1IjoicGllcnJlOTUxNzAiLCJhIjoiY2toMWNtMXM5MDBzazM0bzVtcWk5YTN0OCJ9.1piZsy79X9rKgXGywRU9bQ',
         });
 
         bounds.current = new mapboxgl.LngLatBounds();
@@ -79,6 +79,10 @@ function Map() {
         });
 
         map.current.addControl(new mapboxgl.NavigationControl());
+
+        // disable map zoom when using scroll
+        map.current.scrollZoom.disable();
+        
       } catch (error) {
         console.log(error.name);
         console.log(error.message);
