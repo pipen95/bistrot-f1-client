@@ -6,6 +6,7 @@ export const Login = ({ closeModal }) => {
   const password = useRef();
 
   const [submitting, setSubmitting] = useState(false);
+  const [access, setAccess] = useState(false);
   const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     email: '',
@@ -25,14 +26,14 @@ export const Login = ({ closeModal }) => {
 
   // FOCUS ERROR
 
-  const errorFocus = () => {
-    if(errors['email']){
-      email.current.focus()
-    }
-    if(errors['password']){
-      password.current.focus()
-    }
-  };
+  // const errorFocus = () => {
+  //   if(errors['email']){
+  //     email.current.focus()
+  //   }
+  //   if(errors['password']){
+  //     password.current.focus()
+  //   }
+  // };
 
   //VALIDATION
   const handleValidation = () => {
@@ -47,7 +48,7 @@ export const Login = ({ closeModal }) => {
     } else if (typeof fields['password'] !== 'undefined') {
       if (!fields['password'].match(/^\w+$/)) {
         formIsValid = false;
-        err['password'] = 'Only letters and numbers';
+        err['password'] = 'The password must have letters and numbers';
       }
     }
 
@@ -68,43 +69,59 @@ export const Login = ({ closeModal }) => {
     return formIsValid;
   };
 
+
+
+
   // SUBMIT POST REQUEST
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setSubmitting(true);
     if (handleValidation()) {
-      setSubmitting(true);
-      postData(formData, closeModal);
+      postData(formData);
+
       console.log('form has no errors and submitted!');
+      setFormData({
+        email: '',
+        password: '',
+      });
+
+      if(access){
+        const timerid = setTimeout(() => {
+          closeModal();
+        }, 2000);
+       timerid();
+      } else {
+        console.log('form has server errors');
+        setSubmitting(false);
+      }
+
     } else {
-      console.log('form has errors');
-      errorFocus();
+      console.log('form has type errors');
+      setSubmitting(false);
+      // errorFocus();
     }
-    return setFormData({
-      email: '',
-      password: '',
-    });
   };
 
-  const postData = async (data, closeModal) => {
+  const postData = async (data) => {
     const payload = {
       email: data.email,
       password: data.password,
     };
+
+    let err = {};
     try {
       const res = await axios.post(
         'http://localhost:3001/api/v1/users/login',
         payload
       );
       if (res) {
-        setSubmitting(false);
-        const timerid = setTimeout(() => {
-          closeModal();
-        }, 2000);
-       timerid();
-      
+        setAccess(true);
       }
     } catch (error) {
+      err['server'] = `${error.message}`;
+      setErrors(err);
+      setAccess(false);
+      setSubmitting(false);
       console.log(error.name);
       console.log(error.message);
       console.log(error.stack);
@@ -114,7 +131,7 @@ export const Login = ({ closeModal }) => {
   // JSX FORM
   return (
     <div>
-      {submitting ? (
+      {access ? (
         <>
           <h2 className="text-center">Welcome back!</h2>
         </>
@@ -122,6 +139,7 @@ export const Login = ({ closeModal }) => {
         <>
           <form onSubmit={handleSubmit}>
             <h2 className="text-center">Login Form</h2>
+            <span className="error">{errors['server']}</span>
             <div>
               <fieldset className="form-group" disabled={submitting}>
                 <label htmlFor="email">Email</label>
