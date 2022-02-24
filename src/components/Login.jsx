@@ -14,7 +14,7 @@ export const Login = ({ closeModal }) => {
   });
 
   console.log(formData);
-  console.log(errors);
+  console.log(access);
 
   //HANDLER FONCTIONS
   //ON CHANGE
@@ -47,9 +47,10 @@ export const Login = ({ closeModal }) => {
       formIsValid = false;
       err['password'] = 'Cannot be empty';
     } else if (typeof fields['password'] !== 'undefined') {
-      if (!fields['password'].match(/^\w+$/)) {
+      if (!fields['password'].match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)) {
         formIsValid = false;
-        err['password'] = 'The password must have letters and numbers';
+        err['password'] =
+          'The password must have minimum eight characters, at least one letter, one number. Example: f1bistrot1234';
       }
     }
 
@@ -62,7 +63,7 @@ export const Login = ({ closeModal }) => {
         !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(fields['email'])
       ) {
         formIsValid = false;
-        err['email'] = 'Email is not valid';
+        err['email'] = 'Email is not valid. Example: f1bistrot@example.com';
       }
     }
 
@@ -76,15 +77,15 @@ export const Login = ({ closeModal }) => {
     switch (statusCode) {
       case 400:
         err['server'] =
-          'There was typing error. Please follow the instructions and try again.';
+          'There was typing error. Please follow these instructions and try again.';
         break;
       case 401:
         err['server'] =
-          'This account is not yet authorized. Please Sign up first';
+          'Email adress or password is not recognized. Please try again.';
         break;
-      case 401:
+      case 500:
         err['server'] =
-          'This account is not yet authorized. Please Sign up first';
+          'There was a problem on our server. Please try again later.';
         break;
       default:
         err['server'] =
@@ -103,17 +104,14 @@ export const Login = ({ closeModal }) => {
       if (access) {
         const timerid = setTimeout(() => {
           console.log('form has no errors and submitted!');
-          closeModal();
           setFormData({
             email: '',
             password: '',
           });
           setErrors({});
+          closeModal();
         }, 2000);
         timerid();
-      } else {
-        console.log('form has server errors');
-        setSubmitting(false);
       }
     } else {
       console.log('form has type errors');
@@ -141,7 +139,7 @@ export const Login = ({ closeModal }) => {
       if (error.response) {
         serverValidation(error.response.status);
       } else {
-        serverValidation(error.response.status);
+        serverValidation();
       }
       setAccess(false);
     }
@@ -158,9 +156,9 @@ export const Login = ({ closeModal }) => {
         <>
           <form onSubmit={handleSubmit}>
             <h2 className="text-center">Login Form</h2>
-            <span className="error d-flex justify-content-center">
+            <div className="error d-flex justify-content-center">
               {errors['server']}
-            </span>
+            </div>
             <div>
               <fieldset className="form-group" disabled={submitting}>
                 <label htmlFor="email">Email</label>
@@ -173,7 +171,7 @@ export const Login = ({ closeModal }) => {
                   onChange={handleChange}
                   value={formData.email}
                 />
-                <span className="error">{errors['email']}</span>
+                <div className="error">{errors['email']}</div>
               </fieldset>
               <fieldset className="form-group" disabled={submitting}>
                 <label htmlFor="password">Password</label>
@@ -186,7 +184,7 @@ export const Login = ({ closeModal }) => {
                   onChange={handleChange}
                   value={formData.password}
                 />
-                <span className="error">{errors['password']}</span>
+                <div className="error">{errors['password']}</div>
               </fieldset>
             </div>
             <div className="form-group">
