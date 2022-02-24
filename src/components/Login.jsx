@@ -69,9 +69,6 @@ export const Login = ({ closeModal }) => {
     return formIsValid;
   };
 
-
-
-
   // SUBMIT POST REQUEST
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -85,16 +82,15 @@ export const Login = ({ closeModal }) => {
         password: '',
       });
 
-      if(access){
+      if (access) {
         const timerid = setTimeout(() => {
           closeModal();
         }, 2000);
-       timerid();
+        timerid();
       } else {
         console.log('form has server errors');
         setSubmitting(false);
       }
-
     } else {
       console.log('form has type errors');
       setSubmitting(false);
@@ -122,9 +118,13 @@ export const Login = ({ closeModal }) => {
       setErrors(err);
       setAccess(false);
       setSubmitting(false);
-      console.log(error.name);
-      console.log(error.message);
-      console.log(error.stack);
+      if (error.response) {
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else {
+        console.log('error but no response');
+      }
     }
   };
 
