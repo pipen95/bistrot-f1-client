@@ -13,6 +13,7 @@ export const Login = ({ closeModal }) => {
     password: '',
   });
 
+  console.log(formData);
   console.log(errors);
 
   //HANDLER FONCTIONS
@@ -69,22 +70,45 @@ export const Login = ({ closeModal }) => {
     return formIsValid;
   };
 
+  // Server Validation
+  const serverValidation = (statusCode) => {
+    let err = {};
+    switch (statusCode) {
+      case 400:
+        err['server'] =
+          'There was typing error. Please follow the instructions and try again.';
+        break;
+      case 401:
+        err['server'] =
+          'This account is not yet authorized. Please Sign up first';
+        break;
+      case 401:
+        err['server'] =
+          'This account is not yet authorized. Please Sign up first';
+        break;
+      default:
+        err['server'] =
+          'There was a problem validating the provided data. Please try again.';
+        break;
+    }
+    setErrors(err);
+  };
+
   // SUBMIT POST REQUEST
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitting(true);
     if (handleValidation()) {
       postData(formData);
-
-      console.log('form has no errors and submitted!');
-      setFormData({
-        email: '',
-        password: '',
-      });
-
       if (access) {
         const timerid = setTimeout(() => {
+          console.log('form has no errors and submitted!');
           closeModal();
+          setFormData({
+            email: '',
+            password: '',
+          });
+          setErrors({});
         }, 2000);
         timerid();
       } else {
@@ -104,7 +128,6 @@ export const Login = ({ closeModal }) => {
       password: data.password,
     };
 
-    let err = {};
     try {
       const res = await axios.post(
         'http://localhost:3001/api/v1/users/login',
@@ -114,17 +137,13 @@ export const Login = ({ closeModal }) => {
         setAccess(true);
       }
     } catch (error) {
-      err['server'] = `${error.message}`;
-      setErrors(err);
-      setAccess(false);
       setSubmitting(false);
       if (error.response) {
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
+        serverValidation(error.response.status);
       } else {
-        console.log('error but no response');
+        serverValidation(error.response.status);
       }
+      setAccess(false);
     }
   };
 
@@ -139,7 +158,9 @@ export const Login = ({ closeModal }) => {
         <>
           <form onSubmit={handleSubmit}>
             <h2 className="text-center">Login Form</h2>
-            <span className="error">{errors['server']}</span>
+            <span className="error d-flex justify-content-center">
+              {errors['server']}
+            </span>
             <div>
               <fieldset className="form-group" disabled={submitting}>
                 <label htmlFor="email">Email</label>
