@@ -24,17 +24,6 @@ export const Login = ({ closeModal }) => {
     });
   };
 
-  // FOCUS ERROR
-
-  // const errorFocus = () => {
-  //   if(errors['email']){
-  //     email.current.focus()
-  //   }
-  //   if(errors['password']){
-  //     password.current.focus()
-  //   }
-  // };
-
   //VALIDATION
   const handleValidation = () => {
     let fields = formData;
@@ -117,7 +106,6 @@ export const Login = ({ closeModal }) => {
     } else {
       console.log('form has type errors');
       setSubmitting(false);
-      // errorFocus();
     }
   };
 
