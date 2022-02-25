@@ -67,8 +67,11 @@ export const Signup = ({ closeModal }) => {
         )
       ) {
         formIsValid = false;
-        err['password'] =
+        err['passwordConfirm'] =
           'The password must have minimum eight characters, at least one letter, one number. Example: f1bistrot';
+      } else if (password !== passwordConfirm) {
+        err['passwordConfirm'] =
+          'Passwords are not the same';
       }
     }
 
@@ -89,30 +92,6 @@ export const Signup = ({ closeModal }) => {
     return formIsValid;
   };
 
-  // Server Validation
-  const serverValidation = (statusCode) => {
-    let err = {};
-    switch (statusCode) {
-      case 400:
-        err['server'] =
-          'There was typing error. Please follow these instructions and try again.';
-        break;
-      case 401:
-        err['server'] =
-          'Email adress or password is not recognized. Please try again.';
-        break;
-      case 500:
-        err['server'] =
-          'There was a problem on our server. Please try again later.';
-        break;
-      default:
-        err['server'] =
-          'There was a problem validating the provided data. Please try again.';
-        break;
-    }
-    setErrors(err);
-  };
-
   // CLOSE MODAL
   const timerid = () => {
     setFormData({
@@ -128,8 +107,9 @@ export const Signup = ({ closeModal }) => {
     e.preventDefault();
     setSubmitting(true);
     if (handleValidation()) {
-      if (postData(formData)) {
+      if (postData(formData) === true) {
         console.log('form has no errors and submitted!');
+        setTimeout(timerid, 2000);
       } else {
         setSubmitting(false);
       }
@@ -141,6 +121,7 @@ export const Signup = ({ closeModal }) => {
 
   // SUBMIT POST REQUEST
   const postData = async (data) => {
+    let err ={};
     const payload = {
       firstname: data.firstname,
       lastname: data.lastname,
@@ -155,16 +136,16 @@ export const Signup = ({ closeModal }) => {
       );
       if (res) {
         setAccess(true);
-        setTimeout(timerid, 2000);
       }
     } catch (error) {
       setAccess(false);
-      if (error.response) {
-        serverValidation(error.response.status);
+      if (error.response.data) {
+        err['server'] = `${error.response.data.message}`;
       } else {
-        serverValidation();
+        err['server'] = `There was a problem validating the provided data. Please try again.`;
       }
     }
+    setErrors(err);
     return access;
   };
 
@@ -179,7 +160,7 @@ export const Signup = ({ closeModal }) => {
         <>
           <form onSubmit={handleSubmit}>
             <h2 className="text-center">Login Form</h2>
-            <div className="error d-flex justify-content-center">
+            <div className="error d-flex justify-content-center mb-3">
               {errors['server']}
             </div>
             <div>
