@@ -14,7 +14,6 @@ export const Login = ({ closeModal }) => {
   });
 
   console.log(formData);
-  console.log(access);
 
   //HANDLER FONCTIONS
   //ON CHANGE
@@ -50,7 +49,7 @@ export const Login = ({ closeModal }) => {
       if (!fields['password'].match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)) {
         formIsValid = false;
         err['password'] =
-          'The password must have minimum eight characters, at least one letter, one number. Example: f1bistrot1234';
+          'The password must have minimum eight characters, at least one letter, one number. Example: f1bistrot';
       }
     }
 
@@ -95,23 +94,25 @@ export const Login = ({ closeModal }) => {
     setErrors(err);
   };
 
+  // CLOSE MODAL
+  const timerid = () => {
+    setFormData({
+      email: '',
+      password: '',
+    });
+    setErrors({});
+    closeModal();
+  };
+
   // SUBMIT POST REQUEST
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitting(true);
     if (handleValidation()) {
-      postData(formData);
-      if (access) {
-        const timerid = setTimeout(() => {
-          console.log('form has no errors and submitted!');
-          setFormData({
-            email: '',
-            password: '',
-          });
-          setErrors({});
-          closeModal();
-        }, 2000);
-        timerid();
+      if (postData(formData)) {
+        console.log('form has no errors and submitted!');
+      } else {
+        setSubmitting(false);
       }
     } else {
       console.log('form has type errors');
@@ -133,16 +134,17 @@ export const Login = ({ closeModal }) => {
       );
       if (res) {
         setAccess(true);
+        setTimeout(timerid, 2000);
       }
     } catch (error) {
-      setSubmitting(false);
+      setAccess(false);
       if (error.response) {
         serverValidation(error.response.status);
       } else {
         serverValidation();
       }
-      setAccess(false);
     }
+    return access;
   };
 
   // JSX FORM
@@ -155,13 +157,12 @@ export const Login = ({ closeModal }) => {
       ) : (
         <>
           <form onSubmit={handleSubmit}>
-            <h2 className="text-center">Login Form</h2>
+            <h2 className="text-center mb-4">Login Form</h2>
             <div className="error d-flex justify-content-center">
               {errors['server']}
             </div>
             <div>
               <fieldset className="form-group" disabled={submitting}>
-                <label htmlFor="email">Email</label>
                 <input
                   ref={email}
                   type="text"
@@ -170,11 +171,11 @@ export const Login = ({ closeModal }) => {
                   name="email"
                   onChange={handleChange}
                   value={formData.email}
+                  placeholder="Email"
                 />
                 <div className="error">{errors['email']}</div>
               </fieldset>
               <fieldset className="form-group" disabled={submitting}>
-                <label htmlFor="password">Password</label>
                 <input
                   ref={password}
                   type="text"
@@ -183,6 +184,7 @@ export const Login = ({ closeModal }) => {
                   name="password"
                   onChange={handleChange}
                   value={formData.password}
+                  placeholder="Password"
                 />
                 <div className="error">{errors['password']}</div>
               </fieldset>
