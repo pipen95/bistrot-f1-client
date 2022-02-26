@@ -74,20 +74,22 @@ export const Login = ({ closeModal }) => {
     e.preventDefault();
     setSubmitting(true);
     if (handleValidation()) {
-      if (postData(formData) === true) {
-        console.log('form has no errors and submitted!');
-        setTimeout(timerid, 2000);
-      } else {
-        setSubmitting(false);
-      }
+      postData(formData).then((value) => {
+        // Promesse tenue
+        if (value) {
+          setTimeout(timerid, 2000);
+        } else {
+          setSubmitting(false);
+        }
+      });
     } else {
-      console.log('form has type errors');
       setSubmitting(false);
     }
   };
 
   const postData = async (data) => {
-    let err ={};
+    let err = {};
+    let serverAccess = false;
     const payload = {
       email: data.email,
       password: data.password,
@@ -100,17 +102,20 @@ export const Login = ({ closeModal }) => {
       );
       if (res) {
         setAccess(true);
+        serverAccess = true;
       }
     } catch (error) {
       setAccess(false);
       if (error.response.data) {
         err['server'] = `${error.response.data.message}`;
       } else {
-        err['server'] = `There was a problem validating the provided data. Please try again.`;
+        err[
+          'server'
+        ] = `There was a problem validating the provided data. Please try again.`;
       }
     }
     setErrors(err);
-    return access;
+    return serverAccess;
   };
 
   // JSX FORM

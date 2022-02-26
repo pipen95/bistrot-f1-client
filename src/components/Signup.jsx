@@ -69,10 +69,7 @@ export const Signup = ({ closeModal }) => {
         formIsValid = false;
         err['passwordConfirm'] =
           'The password must have minimum eight characters, at least one letter, one number. Example: f1bistrot';
-      } else if (password !== passwordConfirm) {
-        err['passwordConfirm'] =
-          'Passwords are not the same';
-      }
+      } 
     }
 
     //Email
@@ -95,26 +92,31 @@ export const Signup = ({ closeModal }) => {
   // CLOSE MODAL
   const timerid = () => {
     setFormData({
+      firstname: '',
+      lastname: '',
       email: '',
       password: '',
+      passwordConfirm: '',
     });
     setErrors({});
     closeModal();
   };
+
 
   // SUBMIT POST REQUEST
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitting(true);
     if (handleValidation()) {
-      if (postData(formData) === true) {
-        console.log('form has no errors and submitted!');
-        setTimeout(timerid, 2000);
-      } else {
-        setSubmitting(false);
-      }
+      postData(formData).then((value) => {
+        // Promesse tenue
+        if (value) {
+          setTimeout(timerid, 2000);
+        } else {
+          setSubmitting(false);
+        }
+      });
     } else {
-      console.log('form has type errors');
       setSubmitting(false);
     }
   };
@@ -122,6 +124,7 @@ export const Signup = ({ closeModal }) => {
   // SUBMIT POST REQUEST
   const postData = async (data) => {
     let err ={};
+    let serverAccess = false;
     const payload = {
       firstname: data.firstname,
       lastname: data.lastname,
@@ -136,17 +139,19 @@ export const Signup = ({ closeModal }) => {
       );
       if (res) {
         setAccess(true);
+        serverAccess = true;
       }
     } catch (error) {
       setAccess(false);
       if (error.response.data) {
+        console.log(error.response.data);
         err['server'] = `${error.response.data.message}`;
       } else {
         err['server'] = `There was a problem validating the provided data. Please try again.`;
       }
     }
     setErrors(err);
-    return access;
+    return serverAccess;
   };
 
   // JSX FORM
@@ -215,7 +220,7 @@ export const Signup = ({ closeModal }) => {
                   value={formData.password}
                   placeholder="Password"
                 />
-                <div className="error">{errors['email']}</div>
+                <div className="error">{errors['password']}</div>
               </fieldset>
               <fieldset className="form-group" disabled={submitting}>
                 <input
@@ -227,7 +232,7 @@ export const Signup = ({ closeModal }) => {
                   value={formData.passwordConfirm}
                   placeholder="Password Confirm"
                 />
-                <div className="error">{errors['email']}</div>
+                <div className="error">{errors['passwordConfirm']}</div>
               </fieldset>
             </div>
             <div className="form-group">
