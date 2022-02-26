@@ -14,9 +14,6 @@ export const Login = ({ closeModal }) => {
     password: '',
   });
 
-  console.log(formData);
-  console.log(showPass);
-
   //HANDLER FONCTIONS
   //ON CHANGE
   const handleChange = (event) => {
@@ -73,7 +70,7 @@ export const Login = ({ closeModal }) => {
 
   // TOGGLE SHOW PASSWORD
   const toggleShowPass = () => {
-    if(showPass ==="text") {
+    if (showPass === 'text') {
       setShowPass('password');
     } else {
       setShowPass('text');
@@ -88,7 +85,8 @@ export const Login = ({ closeModal }) => {
       postData(formData).then((value) => {
         // Promesse tenue
         if (value) {
-          setTimeout(timerid, 2000);
+          window.location.reload(false);
+          setTimeout(timerid, 1000);
         } else {
           setSubmitting(false);
         }
@@ -114,6 +112,7 @@ export const Login = ({ closeModal }) => {
       if (res) {
         setAccess(true);
         serverAccess = true;
+        localStorage.setItem('user', JSON.stringify(res.data));
       }
     } catch (error) {
       setAccess(false);
@@ -172,7 +171,7 @@ export const Login = ({ closeModal }) => {
                   <i
                     className={`far ${
                       showPass === 'text' ? 'fa-eye-slash' : 'fa-eye'
-                    } eyepassword` }
+                    } eyepassword`}
                   ></i>
                 </span>
 

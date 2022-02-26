@@ -20,8 +20,6 @@ export const Signup = ({ closeModal }) => {
     passwordConfirm: '',
   });
 
-  console.log(formData);
-
   // HANDLER FONCTIONS
   const handleChange = (event) => {
     return setFormData({
@@ -122,7 +120,8 @@ export const Signup = ({ closeModal }) => {
       postData(formData).then((value) => {
         // Promesse tenue
         if (value) {
-          setTimeout(timerid, 2000);
+          window.location.reload(false);
+          setTimeout(timerid, 1000);
         } else {
           setSubmitting(false);
         }
@@ -151,11 +150,11 @@ export const Signup = ({ closeModal }) => {
       if (res) {
         setAccess(true);
         serverAccess = true;
+        localStorage.setItem('user', JSON.stringify(res.data));
       }
     } catch (error) {
       setAccess(false);
       if (error.response.data) {
-        console.log(error.response.data);
         err['server'] = `${error.response.data.message}`;
       } else {
         err['server'] = `There was a problem validating the provided data. Please try again.`;
