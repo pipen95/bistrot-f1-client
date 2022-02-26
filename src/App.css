@@ -370,3 +370,16 @@ label > input[type='radio'] {
   font-size: 13px;
   color: red;
 }
+
+.p-viewer {
+  float: right;
+  margin-top: -32px;
+  margin-right: 10px;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.eyepassword {
+  color: #b2b7bd;
+}

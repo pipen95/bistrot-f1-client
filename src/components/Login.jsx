@@ -8,12 +8,14 @@ export const Login = ({ closeModal }) => {
   const [submitting, setSubmitting] = useState(false);
   const [access, setAccess] = useState(false);
   const [errors, setErrors] = useState({});
+  const [showPass, setShowPass] = useState('password');
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
 
   console.log(formData);
+  console.log(showPass);
 
   //HANDLER FONCTIONS
   //ON CHANGE
@@ -67,6 +69,15 @@ export const Login = ({ closeModal }) => {
     });
     setErrors({});
     closeModal();
+  };
+
+  // TOGGLE SHOW PASSWORD
+  const toggleShowPass = () => {
+    if(showPass ==="text") {
+      setShowPass('password');
+    } else {
+      setShowPass('text');
+    }
   };
 
   // SUBMIT POST REQUEST
@@ -149,7 +160,7 @@ export const Login = ({ closeModal }) => {
               <fieldset className="form-group" disabled={submitting}>
                 <input
                   ref={password}
-                  type="text"
+                  type={showPass}
                   id="password"
                   className="form-control"
                   name="password"
@@ -157,6 +168,14 @@ export const Login = ({ closeModal }) => {
                   value={formData.password}
                   placeholder="Password"
                 />
+                <span className="p-viewer" onClick={toggleShowPass}>
+                  <i
+                    className={`far ${
+                      showPass === 'text' ? 'fa-eye-slash' : 'fa-eye'
+                    } eyepassword` }
+                  ></i>
+                </span>
+
                 <div className="error">{errors['password']}</div>
               </fieldset>
             </div>

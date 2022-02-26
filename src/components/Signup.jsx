@@ -11,6 +11,7 @@ export const Signup = ({ closeModal }) => {
   const [submitting, setSubmitting] = useState(false);
   const [access, setAccess] = useState(false);
   const [errors, setErrors] = useState({});
+  const [showPass, setShowPass] = useState('password');
   const [formData, setFormData] = useState({
     firstname: '',
     lastname: '',
@@ -28,6 +29,16 @@ export const Signup = ({ closeModal }) => {
       [event.target.name]: event.target.value,
     });
   };
+
+    // TOGGLE SHOW PASSWORD
+    const toggleShowPass = () => {
+      if(showPass ==="text") {
+        setShowPass('password');
+      } else {
+        setShowPass('text');
+      }
+    };
+  
 
   //VALIDATION
   const handleValidation = () => {
@@ -213,25 +224,39 @@ export const Signup = ({ closeModal }) => {
               <fieldset className="form-group" disabled={submitting}>
                 <input
                   ref={password}
-                  type="text"
+                  type={showPass}
                   className="form-control"
                   name="password"
                   onChange={handleChange}
                   value={formData.password}
                   placeholder="Password"
                 />
+                         <span className="p-viewer" onClick={toggleShowPass}>
+                  <i
+                    className={`far ${
+                      showPass === 'text' ? 'fa-eye-slash' : 'fa-eye'
+                    } eyepassword` }
+                  ></i>
+                </span>
                 <div className="error">{errors['password']}</div>
               </fieldset>
               <fieldset className="form-group" disabled={submitting}>
                 <input
                   ref={passwordConfirm}
-                  type="text"
+                  type={showPass}
                   className="form-control"
                   name="passwordConfirm"
                   onChange={handleChange}
                   value={formData.passwordConfirm}
                   placeholder="Password Confirm"
                 />
+                         <span className="p-viewer" onClick={toggleShowPass}>
+                  <i
+                    className={`far ${
+                      showPass === 'text' ? 'fa-eye-slash' : 'fa-eye'
+                    } eyepassword` }
+                  ></i>
+                </span>
                 <div className="error">{errors['passwordConfirm']}</div>
               </fieldset>
             </div>
