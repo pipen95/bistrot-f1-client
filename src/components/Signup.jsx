@@ -11,7 +11,7 @@ export const Signup = ({ closeModal }) => {
   const [submitting, setSubmitting] = useState(false);
   const [access, setAccess] = useState(false);
   const [errors, setErrors] = useState({});
-  const [showPass, setShowPass] = useState('password');
+  const [showPass, setShowPass] = useState('text');
   const [formData, setFormData] = useState({
     firstname: '',
     lastname: '',
@@ -144,17 +144,20 @@ export const Signup = ({ closeModal }) => {
     };
     try {
       const res = await axios.post(
-        'http://localhost:3001/api/v1/users/signup',
+        '/users/signup',
         payload
       );
       if (res) {
         setAccess(true);
         serverAccess = true;
-        localStorage.setItem('user', JSON.stringify(res.data));
+
+        console.log(res.data);
+        localStorage.setItem('user', res.data.token);
       }
     } catch (error) {
       setAccess(false);
-      if (error.response.data) {
+      console.log(error);
+      if (error.response) {
         err['server'] = `${error.response.data.message}`;
       } else {
         err['server'] = `There was a problem validating the provided data. Please try again.`;

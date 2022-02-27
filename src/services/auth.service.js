@@ -3,7 +3,7 @@ const logout = () => {
 };
 
 const getCurrentUser = () => {
-  return JSON.parse(localStorage.getItem("user"));
+  return localStorage.getItem("user");
 };
 
 export default {

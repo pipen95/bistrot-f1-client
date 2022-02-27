@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Jumbotron, Button } from "react-bootstrap";
-import Map from "./Map"
+// import Map from "./Map"
 function Home() {
   return (
     <div>
@@ -27,7 +27,7 @@ function Home() {
                 Check Live Standings
               </Button>
             </div>
-            <Map/>
+            {/* <Map/> */}
           </Jumbotron>
 
         </Jumbotron>

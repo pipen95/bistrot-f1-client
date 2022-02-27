@@ -8,7 +8,7 @@ export const Login = ({ closeModal }) => {
   const [submitting, setSubmitting] = useState(false);
   const [access, setAccess] = useState(false);
   const [errors, setErrors] = useState({});
-  const [showPass, setShowPass] = useState('password');
+  const [showPass, setShowPass] = useState('text');
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -77,7 +77,7 @@ export const Login = ({ closeModal }) => {
     }
   };
 
-  // SUBMIT POST REQUEST
+  // HANDLE SUBMIT
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitting(true);
@@ -96,6 +96,7 @@ export const Login = ({ closeModal }) => {
     }
   };
 
+  // POST REQUEST
   const postData = async (data) => {
     let err = {};
     let serverAccess = false;
@@ -105,18 +106,19 @@ export const Login = ({ closeModal }) => {
     };
 
     try {
-      const res = await axios.post(
-        'http://localhost:3001/api/v1/users/login',
-        payload
-      );
+      const res = await axios.post('/api/users/login', payload);
+
       if (res) {
         setAccess(true);
         serverAccess = true;
-        localStorage.setItem('user', JSON.stringify(res.data));
+
+        console.log(res.data);
+        localStorage.setItem('user', res.data.token);
       }
     } catch (error) {
       setAccess(false);
-      if (error.response.data) {
+      console.log(error);
+      if (error.response) {
         err['server'] = `${error.response.data.message}`;
       } else {
         err[

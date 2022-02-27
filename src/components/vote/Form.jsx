@@ -294,7 +294,7 @@ export const Form = ({ id, driver_name, closeModal }) => {
 
     try {
       const res = await axios.post(
-        "http://localhost:3001/api/v1/votes",
+        "/api/votes",
         payload
       );
       if (_isMounted.current && res) {
