@@ -13,6 +13,7 @@
     "focus-trap-react": "^8.8.1",
     "font-awesome": "^4.7.0",
     "history": "^5.2.0",
+    "http-proxy-middleware": "^2.0.3",
     "jquery": "^3.6.0",
     "mapbox-gl": "^2.6.1",
     "node": "^14.19.0",

@@ -1,6 +1,12 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 
+axios.create({
+  baseURL: 'http://localhost:3001',
+  withCredentials: true,
+  headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+});
+
 export const Signup = ({ closeModal }) => {
   const firstname = useRef();
   const lastname = useRef();
@@ -28,15 +34,14 @@ export const Signup = ({ closeModal }) => {
     });
   };
 
-    // TOGGLE SHOW PASSWORD
-    const toggleShowPass = () => {
-      if(showPass ==="text") {
-        setShowPass('password');
-      } else {
-        setShowPass('text');
-      }
-    };
-  
+  // TOGGLE SHOW PASSWORD
+  const toggleShowPass = () => {
+    if (showPass === 'text') {
+      setShowPass('password');
+    } else {
+      setShowPass('text');
+    }
+  };
 
   //VALIDATION
   const handleValidation = () => {
@@ -78,7 +83,7 @@ export const Signup = ({ closeModal }) => {
         formIsValid = false;
         err['passwordConfirm'] =
           'The password must have minimum eight characters, at least one letter, one number. Example: f1bistrot';
-      } 
+      }
     }
 
     //Email
@@ -111,7 +116,6 @@ export const Signup = ({ closeModal }) => {
     closeModal();
   };
 
-
   // SUBMIT POST REQUEST
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -121,7 +125,7 @@ export const Signup = ({ closeModal }) => {
         // Promesse tenue
         if (value) {
           window.location.reload(false);
-          setTimeout(timerid, 1000);
+          window.setTimeout(timerid, 1000);
         } else {
           setSubmitting(false);
         }
@@ -133,7 +137,7 @@ export const Signup = ({ closeModal }) => {
 
   // SUBMIT POST REQUEST
   const postData = async (data) => {
-    let err ={};
+    let err = {};
     let serverAccess = false;
     const payload = {
       firstname: data.firstname,
@@ -143,14 +147,10 @@ export const Signup = ({ closeModal }) => {
       passwordConfirm: data.passwordConfirm,
     };
     try {
-      const res = await axios.post(
-        '/users/signup',
-        payload
-      );
+      const res = await axios.post('/api/users/signup', payload);
       if (res) {
         setAccess(true);
         serverAccess = true;
-
         console.log(res.data);
         localStorage.setItem('user', res.data.token);
       }
@@ -160,7 +160,9 @@ export const Signup = ({ closeModal }) => {
       if (error.response) {
         err['server'] = `${error.response.data.message}`;
       } else {
-        err['server'] = `There was a problem validating the provided data. Please try again.`;
+        err[
+          'server'
+        ] = `There was a problem validating the provided data. Please try again.`;
       }
     }
     setErrors(err);
@@ -233,11 +235,11 @@ export const Signup = ({ closeModal }) => {
                   value={formData.password}
                   placeholder="Password"
                 />
-                         <span className="p-viewer" onClick={toggleShowPass}>
+                <span className="p-viewer" onClick={toggleShowPass}>
                   <i
                     className={`far ${
                       showPass === 'text' ? 'fa-eye-slash' : 'fa-eye'
-                    } eyepassword` }
+                    } eyepassword`}
                   ></i>
                 </span>
                 <div className="error">{errors['password']}</div>
@@ -252,11 +254,11 @@ export const Signup = ({ closeModal }) => {
                   value={formData.passwordConfirm}
                   placeholder="Password Confirm"
                 />
-                         <span className="p-viewer" onClick={toggleShowPass}>
+                <span className="p-viewer" onClick={toggleShowPass}>
                   <i
                     className={`far ${
                       showPass === 'text' ? 'fa-eye-slash' : 'fa-eye'
-                    } eyepassword` }
+                    } eyepassword`}
                   ></i>
                 </span>
                 <div className="error">{errors['passwordConfirm']}</div>

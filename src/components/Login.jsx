@@ -1,6 +1,12 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 
+axios.create({
+  baseURL: 'http://localhost:3001',
+  withCredentials: true,
+  headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+});
+
 export const Login = ({ closeModal }) => {
   const email = useRef();
   const password = useRef();
@@ -86,7 +92,7 @@ export const Login = ({ closeModal }) => {
         // Promesse tenue
         if (value) {
           window.location.reload(false);
-          setTimeout(timerid, 1000);
+          window.setTimeout(timerid, 1000);
         } else {
           setSubmitting(false);
         }
@@ -111,7 +117,6 @@ export const Login = ({ closeModal }) => {
       if (res) {
         setAccess(true);
         serverAccess = true;
-
         console.log(res.data);
         localStorage.setItem('user', res.data.token);
       }

@@ -5,6 +5,7 @@ import Vote from './components/vote/Vote';
 import Standings from './components/standings/Standings';
 import Home from './components/Home';
 import Menu from './components/Menu';
+import Profile from './components/Profile';
 import AuthService from './services/auth.service';
 
 const App = () => {
