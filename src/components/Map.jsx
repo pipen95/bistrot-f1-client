@@ -14,7 +14,7 @@ function Map() {
     if (_isMounted.current) {
       const getLocations = async () => {
         try {
-          const res = await axios('http://localhost:3001/api/v1/votes');
+          const res = await axios('/api/votes');
           if (res) {
             return setVotes(res.data.data.votes);
           }

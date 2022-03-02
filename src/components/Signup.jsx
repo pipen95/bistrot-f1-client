@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
+import AuthService from './../services/auth.service'
 
 axios.create({
   baseURL: 'http://localhost:3001',
@@ -150,9 +151,8 @@ export const Signup = ({ closeModal }) => {
       const res = await axios.post('/api/users/signup', payload);
       if (res) {
         setAccess(true);
+        AuthService.setCookie(res.data);
         serverAccess = true;
-        console.log(res.data);
-        localStorage.setItem('user', res.data.token);
       }
     } catch (error) {
       setAccess(false);

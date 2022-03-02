@@ -117,8 +117,6 @@ export const Login = ({ closeModal }) => {
 
       if (res) {
         setAccess(true);
-        console.log(res.data);
-        // localStorage.setItem('user', res.data.token);
         AuthService.setCookie(res.data);
         serverAccess = true;
       }
