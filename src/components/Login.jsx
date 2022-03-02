@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
+import AuthService from './../services/auth.service'
 
 axios.create({
   baseURL: 'http://localhost:3001',
@@ -90,7 +91,7 @@ export const Login = ({ closeModal }) => {
     if (handleValidation()) {
       postData(formData).then((value) => {
         // Promesse tenue
-        if (value) {
+        if (value===true) {
           window.location.reload(false);
           window.setTimeout(timerid, 1000);
         } else {
@@ -116,9 +117,10 @@ export const Login = ({ closeModal }) => {
 
       if (res) {
         setAccess(true);
-        serverAccess = true;
         console.log(res.data);
-        localStorage.setItem('user', res.data.token);
+        // localStorage.setItem('user', res.data.token);
+        AuthService.setCookie(res.data);
+        serverAccess = true;
       }
     } catch (error) {
       setAccess(false);
