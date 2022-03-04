@@ -11,7 +11,7 @@ const Menu = ({ currentUser, logOut }) => {
             className="justify-content-start flex-nowrap"
             style={{ marginLeft: '2.4vw' }}
           >
-            <Navbar.Brand href="/">F1 Bistrot</Navbar.Brand>
+            <Navbar.Brand href="/">F1 Bistro</Navbar.Brand>
             <Nav className="me-auto">
               <Nav.Link href="/standings">Standings</Nav.Link>
             </Nav>
@@ -30,13 +30,14 @@ const Menu = ({ currentUser, logOut }) => {
           >
             {currentUser ? (
               <>
-                <Nav className="me-auto">
-                  <Nav.Link href="/profil">Pierre</Nav.Link>
-                </Nav>
+              
                 <Nav className="me-auto">
                   <Nav.Link href="/" onClick={logOut}>
                     logout
                   </Nav.Link>
+                  <Nav className="me-auto">
+                  <Nav.Link href="/profile">Pierre</Nav.Link>
+                </Nav>
                 </Nav>
               </>
             ) : (

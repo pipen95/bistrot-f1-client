@@ -1,10 +1,11 @@
 import React, { useState,useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from 'react-router-dom';
 import Vote from './components/vote/Vote';
 import Standings from './components/standings/Standings';
 import Home from './components/Home';
 import Menu from './components/Menu';
+import Home from './components/Menu';
 import Profile from './components/Profile';
 import AuthService from './services/auth.service';
 

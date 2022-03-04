@@ -1,0 +1,27 @@
+
+%icon {
+  & :hover,
+  & :focus {
+    fill: var(--color-4);
+    cursor: pointer;
+  }
+  
+  & svg {
+    height: 3rem;
+    width: 3rem;
+  }
+}
+
+%link {
+  &:link,
+  &:visited {
+    color: var(--color-2-bis);
+    text-decoration: none;
+  }
+
+  &:hover,
+  &:focus {
+    color: var(--color-4);
+    cursor: pointer;
+  }
+}
