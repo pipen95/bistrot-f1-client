@@ -2,19 +2,18 @@
   grid-area: Main;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: max-content 1fr;
   grid-template-areas:
-    'Board Board Video Video'
-    'Board Board Video Video'
-    'Wall Wall Wall Wall';
+    'Title Title Title Title'
+    'Results Results News News';
 }
 
-.Board {
-  grid-area: Board;
+.Title {
+  grid-area: Title;
 }
-.Video {
-  grid-area: Video;
+.Results {
+  grid-area: Results;
 }
-.Wall {
-  grid-area: Wall;
+.News {
+  grid-area: News;
 }

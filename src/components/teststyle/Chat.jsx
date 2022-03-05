@@ -1,8 +1,7 @@
 import React from 'react';
-// import Map from "./Map"
 function Chat() {
   return (
-    <div className='Chat'>
+    <div className="Chat u-center-text">
       <h2>Chat</h2>
     </div>
   );

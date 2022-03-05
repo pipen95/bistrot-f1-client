@@ -1,5 +1,4 @@
 import React from 'react';
-
 const Menu = () => {
   return (
     <div className="Menu">
@@ -12,21 +11,29 @@ const Menu = () => {
               className="nav__logo--img"
             />
           </a>
-          <h1>F1 Bistro</h1>
+          <h1 className="nowrap">F1 Bistro</h1>
         </div>
         <div classeName="nav_container">
           <ul className="nav__list">
             <li className="nav__item">
-              <a href='#' className="nav__link">Game</a>
+              <a href="#" className="nav__link">
+                Game
+              </a>
             </li>
             <li className="nav__item">
-              <a href='#' className="nav__link">Standings</a>
+              <a href="#" className="nav__link">
+                Standings
+              </a>
             </li>
             <li className="nav__item">
-              <a href='#' className="nav__link">Login</a>
+              <a href="#" className="nav__link">
+                Login
+              </a>
             </li>
             <li className="nav__item">
-              <a href='#' className="nav__link">Signup</a>
+              <a href="#" className="nav__link">
+                Signup
+              </a>
             </li>
           </ul>
         </div>
