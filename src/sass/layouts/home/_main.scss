@@ -1,0 +1,20 @@
+.Main {
+  grid-area: Main;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-areas:
+    'Board Board Video Video'
+    'Board Board Video Video'
+    'Wall Wall Wall Wall';
+}
+
+.Board {
+  grid-area: Board;
+}
+.Video {
+  grid-area: Video;
+}
+.Wall {
+  grid-area: Wall;
+}

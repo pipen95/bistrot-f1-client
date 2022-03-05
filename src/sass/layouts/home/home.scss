@@ -1,3 +1,5 @@
+@import 'main';
+
 .home {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -6,11 +8,7 @@
     'Main Main Main Chat'
     'Main Main Main Chat'
     'Main Main Main Chat'
-    'Media Media Media Chat';
-}
-
-.Main {
-  grid-area: Main;
+    'Shop Shop Shop Chat';
 }
 
 .Chat {

@@ -2,33 +2,34 @@ import React from 'react';
 
 const Menu = () => {
   return (
-    <div classNameName="Menu">
+    <div className="Menu">
       <nav className="nav">
         <div className="nav__logo">
           <a>
             <img
-              src="https://res.cloudinary.com/pipen95/image/upload/v1560599032/Cheese-bird/img/Cheese-bird.jpg"
+              src="./img/check-chair-blue.png"
               alt="logo"
-              className="nav__logo__img"
+              className="nav__logo--img"
             />
           </a>
           <h1>F1 Bistro</h1>
         </div>
-
-        <ul className="nav__list">
-          <li className="nav__item">
-            <a className="nav__link">How it works</a>
-          </li>
-          <li className="nav__item">
-            <a className="nav__link">Boxes</a>
-          </li>
-          <li className="nav__item">
-            <a className="nav__link">Subscribe</a>
-          </li>
-          <li className="nav__item">
-            <a className="nav__link">Contact</a>
-          </li>
-        </ul>
+        <div classeName="nav_container">
+          <ul className="nav__list">
+            <li className="nav__item">
+              <a href='#' className="nav__link">Game</a>
+            </li>
+            <li className="nav__item">
+              <a href='#' className="nav__link">Standings</a>
+            </li>
+            <li className="nav__item">
+              <a href='#' className="nav__link">Login</a>
+            </li>
+            <li className="nav__item">
+              <a href='#' className="nav__link">Signup</a>
+            </li>
+          </ul>
+        </div>
       </nav>
     </div>
   );

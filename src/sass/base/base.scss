@@ -1,54 +1,30 @@
-:root {
-  --color-1: #062633;
-  --color-2: #17556d;
-  --color-2-bis: #2983a5;
-  --color-3: rgb(89, 131, 146);
-  --color-4: rgba(27, 146, 110, 0.623);
+@import 'typography';
 
-  --color-off-white: #f5f8ef;
-  --color-grey: #474646;
-  // FONT VARIABLES
-  --font-title: 'Oswald', sans-serif;
-  --font-text: 'Open Sans', sans-serif;
+*,
+*::after,
+*::before {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: inherit;
 }
-
-$bp-large: 68.75em; //=1100px /16px
-$bp-medium: 56.25em; //=900px /16px
-$bp-small: 37.5em; //=600px /16px
-$bp-smallest: 31.45em; // 500px
-$bp-mobile: 25em; // 400px
 
 html,
 body {
+  // This is what 1rem is
+  font-size: 62.5%; /* 1rem=10px*/
   overflow-x: hidden;
   box-sizing: border-box;
-  font-size: 62.5%; //1rem = 10px
   background-image: linear-gradient(
     to right bottom,
     rgb(255, 255, 255),
     rgb(244, 246, 247)
   );
   background-repeat: no-repeat;
-  color: var(--color-grey);
-  font-family: var(--font-text);
 }
 
-* {
-  padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-}
-
-h1,
-h2,
-h3 {
-  font-family: var(--font-title);
-}
-
-h1 {
-  color: var(--color-white);
-  margin-right: -8px;
-  font-size: 3.5rem;
+::selection {
+  background-color: $color-primary;
+  color: white;
 }
 
 // TEST
