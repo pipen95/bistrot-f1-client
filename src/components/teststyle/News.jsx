@@ -2,16 +2,17 @@ import React from 'react';
 function News() {
   return (
     <div className="News">
-      <h3>News</h3>
-      <iframe
-        width="100%"
-        height="315"
-        src="https://www.youtube.com/embed/c2jEcjLsk-s"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
+      <div className="twitter">
+        <a
+          className="twitter-timeline"
+          data-height="600"
+          data-theme="dark"
+          href="https://twitter.com/F1?ref_src=twsrc%5Etfw"
+        >
+          Tweets by F1
+        </a>
+        ;
+      </div>
     </div>
   );
 }

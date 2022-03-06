@@ -1,7 +1,7 @@
 import React from 'react';
 import './sass/main.scss';
 import Main from './components/teststyle/Main';
-import Chat from './components/teststyle/Chat';
+import Side from './components/teststyle/Side';
 import Shop from './components/teststyle/Shop';
 import Menu from './components/teststyle/Menu';
 
@@ -11,9 +11,9 @@ const App = () => {
       <Menu />
       <div className="container">
         <div className="home">
-            <Main />
-            <Chat />
-            <Shop />
+          <Main />
+          <Side />
+          <Shop />
         </div>
       </div>
     </>

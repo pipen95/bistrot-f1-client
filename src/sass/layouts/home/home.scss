@@ -1,18 +1,15 @@
 @import 'main';
+@import 'side';
+@import 'gp';
 
 .home {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 2vh 1vw;
   grid-template-areas:
-    'Main Main Main Main Chat'
-    'Main Main Main Main Chat'
-    'Main Main Main Main Chat'
-    'Shop Shop Shop Shop Chat';
-}
-
-.Chat {
-  grid-area: Chat;
+    'Main Side'
+    'Shop Side';
 }
 
 .Shop {

@@ -10,13 +10,19 @@ h1 {
   color: $color-white;
   backface-visibility: hidden;
   text-transform: uppercase;
-  font-size: 3rem;
-  font-weight: 550;
+  font-weight: 700;
+  display: inline-block;
+  font-size: 3.5rem;
   letter-spacing: 0.2rem;
+  transition: all 0.2s;
+  &:hover {
+    transform: skewY(1deg) skewX(2deg) scale(1.05);
+    text-shadow: 0.5rem 0.5rem 2rem rgba($color-black, 0.2);
+  }
 }
 
 h2 {
-  font-size: 3.5rem;
+  font-size: 2.8rem;
   text-transform: uppercase;
   font-weight: 700;
   display: inline-block;
@@ -28,17 +34,18 @@ h2 {
   -webkit-background-clip: text;
   color: transparent;
   letter-spacing: 0.2rem;
-  transition: all 0.2s;
-  &:hover {
-    transform: skewY(1deg) skewX(2deg) scale(1.05);
-    text-shadow: 0.5rem 0.5rem 2rem rgba($color-black, 0.2);
-  }
+  margin: 0 0 1.5rem 0;
+  // transition: all 0.2s;
+  // &:hover {
+  //   transform: skewY(1deg) skewX(2deg) scale(1.05);
+  //   text-shadow: 0.5rem 0.5rem 2rem rgba($color-black, 0.2);
+  // }
 }
 
 h3 {
   font-size: $default-font-size;
-  font-weight: 700;
   text-transform: uppercase;
+  margin-bottom: 1rem;
 }
 
 p,

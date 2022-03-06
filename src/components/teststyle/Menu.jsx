@@ -27,6 +27,11 @@ const Menu = () => {
             </li>
             <li className="nav__item">
               <a href="#" className="nav__link">
+                Shop
+              </a>
+            </li>
+            <li className="nav__item">
+              <a href="#" className="nav__link">
                 Login
               </a>
             </li>
