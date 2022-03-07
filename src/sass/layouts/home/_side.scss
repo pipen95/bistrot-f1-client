@@ -1,4 +1,20 @@
 .Side {
   grid-area: Side;
+  display: grid;
+  grid-gap: 2vh 0;
+  grid-template-rows: min-content auto;
+  grid-template-areas:
+    'Message'
+    'Chat';
+}
+
+.Message {
+  grid-area: Message;
+  padding: 0 1vw 0 1vw;
   background-color: orange;
+}
+.Chat {
+  grid-area: Chat;
+  padding: 0 1vw 0 1vw;
+  background-color: greenyellow;
 }

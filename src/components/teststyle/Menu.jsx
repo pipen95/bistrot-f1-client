@@ -6,7 +6,7 @@ const Menu = () => {
         <div className="nav__logo">
           <a>
             <img
-              src="./img/check-chair-blue.png"
+              src="./img/check-chair-blue-volant.png"
               alt="logo"
               className="nav__logo--img"
             />
