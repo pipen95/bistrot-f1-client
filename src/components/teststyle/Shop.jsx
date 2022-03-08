@@ -1,8 +1,10 @@
 import React from 'react';
 function Shop() {
   return (
-    <div className="Shop u-center-text" style={{ backgroundColor: 'yellow' }}>
-      <h2>Shop</h2>
+    <div className="Shop u-center-text">
+      <div className="Title-Shop">
+        <h2>Shop</h2>
+      </div>
     </div>
   );
 }

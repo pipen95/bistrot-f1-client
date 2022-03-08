@@ -1,15 +1,15 @@
 .GP {
+  @include section;
   grid-area: GP;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: min-content auto;
-  padding: 0 1vw 0 1vw;
   grid-template-areas:
     'Title Title'
     'Drivers Players';
 }
 
-.Title {
+.Title-GP {
   grid-area: Title;
 }
 .Drivers {

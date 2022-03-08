@@ -1,6 +1,7 @@
 @import 'main';
 @import 'side';
 @import 'gp';
+@import 'shop';
 
 .home {
   display: grid;
@@ -10,8 +11,4 @@
   grid-template-areas:
     'Main Side'
     'Shop Side';
-}
-
-.Shop {
-  grid-area: Shop;
 }

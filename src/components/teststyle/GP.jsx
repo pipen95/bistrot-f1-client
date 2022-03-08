@@ -6,8 +6,8 @@ function GP() {
   };
 
   return (
-    <div className="GP" style={{ backgroundColor: 'lightgrey' }}>
-      <div className="Title u-center-text">
+    <div className="GP">
+      <div className="Title-GP u-center-text">
         <h2>Bahrain Grand Prix results</h2>
       </div>
 
@@ -33,7 +33,7 @@ function GP() {
         <p>lorem</p>
         <div>
           <a href="#" className="btn btn--blue">
-            Play
+            Play <span>♤</span>
           </a>
         </div>
       </div>

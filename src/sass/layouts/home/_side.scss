@@ -5,16 +5,17 @@
   grid-template-rows: min-content auto;
   grid-template-areas:
     'Message'
-    'Chat';
+    'News';
 }
 
 .Message {
+  @include section;
   grid-area: Message;
-  padding: 0 1vw 0 1vw;
-  background-color: orange;
+  padding: 1.5vh 1.5vw 2vh 1.5vw;
 }
-.Chat {
-  grid-area: Chat;
-  padding: 0 1vw 0 1vw;
-  background-color: greenyellow;
+
+.News {
+  grid-area: News;
+  border-radius: $border-radius-small;
+  box-shadow: $box-shadow-small;
 }
