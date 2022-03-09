@@ -6,6 +6,15 @@
   transform: translate(-50%, -50%);
 }
 
+//CLEARFIX
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
 @mixin section {
   border-radius: $border-radius-small;
   box-shadow: $box-shadow-small;

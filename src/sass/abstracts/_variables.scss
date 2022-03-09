@@ -32,12 +32,12 @@ $default-font-size: 1.6rem;
 $border-radius-small: 3px;
 
 // GRID
-// $grid-width: 114rem;
-// $gutter-vertical: 8rem;
-// $gutter-vertical-small: 6rem;
-// $gutter-horizontal: 6rem;
+$grid-width: 90vw;
+$gutter-vertical: 8rem;
+$gutter-horizontal: 6rem;
 
 //SHADOWS
-$box-shadow-small: 0 1rem 2rem rgba($color-black, 0.2);
+$box-shadow-small: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+  rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
 // $box-shadow-medium:
 // $box-shadow-big:

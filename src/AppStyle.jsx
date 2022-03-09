@@ -4,6 +4,7 @@ import Main from './components/teststyle/Main';
 import Side from './components/teststyle/Side';
 import Shop from './components/teststyle/Shop';
 import Menu from './components/teststyle/Menu';
+import Footer from './components/teststyle/Footer';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Shop />
         </div>
       </div>
+      <Footer />
     </>
   );
 };
