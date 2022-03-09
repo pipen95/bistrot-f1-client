@@ -16,8 +16,8 @@
 }
 
 @mixin section {
-  border-radius: $border-radius-small;
-  box-shadow: $box-shadow-small;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
   padding: 1.5vh 1.5vw 2vh 1.5vw;
 }
 

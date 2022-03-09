@@ -2,16 +2,19 @@
   @include section;
   grid-area: Shop;
   display: grid;
-  grid-gap: 2vh 0;
+  gap: 2vh 0;
   grid-template-rows: min-content auto;
   grid-template-areas:
     'Title-Shop'
-    'Items';
+    'Items-Shop';
 }
 
 .Title-Shop {
   grid-area: Title-Shop;
 }
-.Items {
-  grid-area: Items;
+.Items-Shop {
+  grid-area: Items-Shop;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }

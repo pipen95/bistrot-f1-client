@@ -5,6 +5,7 @@ import Side from './components/teststyle/Side';
 import Shop from './components/teststyle/Shop';
 import Menu from './components/teststyle/Menu';
 import Footer from './components/teststyle/Footer';
+import Galerie from './components/teststyle/Galerie';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Side />
           <Shop />
         </div>
+        <Galerie />
       </div>
       <Footer />
     </>

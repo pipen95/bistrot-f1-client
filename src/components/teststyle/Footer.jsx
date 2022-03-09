@@ -48,7 +48,7 @@ const Menu = () => {
             <a
               href="https://github.com/pipen95"
               target="blank"
-              class="footer__link"
+              className="footer__link"
             >
               Pipen95
             </a>

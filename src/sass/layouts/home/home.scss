@@ -2,13 +2,15 @@
 @import 'side';
 @import 'gp';
 @import 'shop';
+@import 'galerie';
 
 .home {
   display: grid;
   grid-template-columns: 3fr 1fr;
   grid-template-rows: auto;
-  grid-gap: 2vh 1vw;
+  gap: 2vh 1vw;
   grid-template-areas:
     'Main Side'
-    'Shop Side';
+    'Shop Side'
+    'Galerie Galerie';
 }

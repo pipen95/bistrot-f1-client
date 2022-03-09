@@ -1,0 +1,14 @@
+.shop-card {
+  width: 20%;
+  height: fit-content;
+  background-color: rgba($color-grey-light-1, 0.95);
+  font-size: $default-font-size;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: $border-radius;
+  // box-shadow: $box-shadow;
+  transition: transform 0.3s;
+  &:hover {
+    transform: translateY(-1.5rem) scale(1.03);
+  }
+}
