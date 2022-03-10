@@ -2,19 +2,19 @@
   @include section;
   grid-area: GP;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: min-content auto;
   grid-template-areas:
-    'Title Title'
-    'Drivers Players';
+    'Title'
+    'Standings';
 }
 
 .Title-GP {
   grid-area: Title;
 }
-.Drivers {
-  grid-area: Drivers;
-}
-.Players {
-  grid-area: Players;
+.Standings {
+  grid-area: Standings;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

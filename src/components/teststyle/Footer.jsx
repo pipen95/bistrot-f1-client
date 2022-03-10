@@ -4,7 +4,7 @@ const Menu = () => {
     <footer className="footer">
       <div className="footer__logo-box">
         <img
-          src="./img/check-chair-blue-volant.png"
+          src="./img/check-chair-blue-volant-bis.png"
           alt="logo"
           className="footer__logo"
         />
