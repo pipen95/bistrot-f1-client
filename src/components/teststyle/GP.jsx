@@ -1,5 +1,5 @@
 import React from 'react';
-import Standings from './Standings';
+import Standings from './standings/Standings';
 
 function GP() {
   return (

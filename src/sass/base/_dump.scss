@@ -1,66 +1,3 @@
-/* Standard Table Styles */
-
-table {
-  margin: 1em 0;
-  border-collapse: collapse;
-  border: 0.1em solid #d6d6d6;
-}
-
-caption {
-  text-align: left;
-  font-style: italic;
-  padding: 0.25em 0.5em 0.5em 0.5em;
-}
-
-th,
-td {
-  font-size: $default-font-size;
-  padding: 0.25em 0.5em 0.25em 1em;
-  vertical-align: text-top;
-  text-align: center;
-  text-indent: -0.5em;
-}
-
-th {
-  vertical-align: bottom;
-  background-color: #16517e;
-  text-align: left !important;
-  color: #fff;
-}
-
-tr:nth-child(even) th[scope='row'] {
-  background-color: #f2f2f2;
-}
-
-tr:nth-child(odd) th[scope='row'] {
-  background-color: #fff;
-}
-
-tr:nth-child(even) {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
-tr:nth-child(odd) {
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
-/* Responsive Table */
-
-[role='region'][aria-labelledby][tabindex] {
-  overflow: auto;
-  border: 0.1em solid #d6d6d6;
-}
-
-[role='region'][aria-labelledby][tabindex]:focus {
-  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
-  outline: 0.1em solid rgba(0, 0, 0, 0.1);
-}
-
-[role='region'][aria-labelledby][tabindex] table {
-  margin: 0;
-  border: none;
-}
-
 // TEST
 // body {
 //   margin: 0;
@@ -400,33 +337,6 @@ tr:nth-child(odd) {
 
 // .table thead > tr > th {
 //   border-top: none;
-// }
-
-// .loserDriverImage {
-//   width: 40px;
-//   height: 40px;
-//   border-radius: 100%;
-//   background-color: #ebebe6;
-// }
-
-// .rivalTeam {
-//   border-radius: 50%;
-//   width: 40px;
-//   height: 40px;
-//   border: 0px;
-// }
-
-// .country-flag {
-//   width: 40px;
-// }
-
-// .table-container {
-//   padding: 0 !important;
-// }
-
-// .table td,
-// .table th {
-//   vertical-align: middle !important;
 // }
 
 // .error {

@@ -13,5 +13,4 @@ function News() {
     </div>
   );
 }
-
 export default News;

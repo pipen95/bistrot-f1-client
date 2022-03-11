@@ -14,7 +14,20 @@
 }
 .Standings {
   grid-area: Standings;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'Podium Table'
+    'Cta Cta';
+}
+
+.Podium {
+  grid-area: Podium;
+}
+.Table {
+  grid-area: Table;
+}
+.Cta {
+  grid-area: Cta;
 }
