@@ -1,0 +1,17 @@
+.Podium {
+  grid-area: Podium;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'Podium Table'
+    'Cta Cta';
+}
+
+.homedriverImage {
+  height: 70%;
+  width: auto;
+  position: absolute;
+  bottom: 0;
+}

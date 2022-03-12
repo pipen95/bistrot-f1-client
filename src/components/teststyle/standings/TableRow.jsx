@@ -64,7 +64,6 @@ class TableRow extends Component {
             </a>
           </td>
           <td>{this.props.constructor.Name}</td>
-          <td>{this.props.ranking.wins}</td>
           <td>{this.props.ranking.points}</td>
         </tr>
       </>

@@ -8,11 +8,6 @@ function GP() {
         <h2>Bahrain Grand Prix results</h2>
       </div>
       <Standings />
-      <div className="u-center-text">
-        <a href="#" className="btn-text nowrap">
-          View all stats →
-        </a>
-      </div>
     </div>
   );
 }
