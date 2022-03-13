@@ -8,14 +8,16 @@ table {
   border: 0.1em solid #d6d6d6;
   border-radius: $border-radius;
   border-spacing: 0;
+  background-color: $color-primary-dark;
 }
-
-// table > * {
-//   border-collapse: collapse;
-// }
 
 .country-flag {
   width: 30px;
+}
+
+.team-box {
+  display: flex;
+  align-items: center;
 }
 
 .loserDriverImage {
@@ -36,29 +38,24 @@ th,
 td {
   font-size: $small-font-size;
   padding: 0.25em 0.5em 0.25em 1em;
-  text-align: center;
-  text-indent: -0.5em;
-}
-
-.table thead {
-  background-color: $color-primary-dark;
-  color: #fff;
-}
-
-tr:nth-child(even) th[scope='row'] {
-  background-color: #f2f2f2;
-}
-
-tr:nth-child(odd) th[scope='row'] {
-  background-color: #fff;
+  vertical-align: middle;
 }
 
 tr:nth-child(even) {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #f2f2f2;
 }
 
 tr:nth-child(odd) {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: #fff;
+}
+
+thead > tr {
+  background-color: $color-primary-dark !important;
+  color: #fff;
+  border-radius: 6px;
+}
+thead > tr > th {
+  border-radius: 6px;
 }
 
 /* Responsive Table */

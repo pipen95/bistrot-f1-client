@@ -40,30 +40,17 @@ class TableRow extends Component {
             </a>
           </td>
           <td>{`${this.props.driver.GivenName}\u00a0${this.props.driver.FamilyName}`}</td>
-          <td className="country">
+          <td className="team-box">
             <img
-              className="country-flag"
+              className="rivalTeam"
               alt=""
-              src={`${this.countryPicker(
-                this.props.driver.driverId,
-                'https://www.formula1.com/content/fom-website/en/drivers/esteban-ocon/_jcr_content/countryFlag.img.gif/1470912118447.gif'
+              src={`${this.imagePicker(
+                this.props.constructor.constructorId,
+                'https://www.f1fantasytracker.com/Images/Constructors/AlphaTauriIcon.jpg'
               )}`}
-            />
+            />{' '}
+            {this.props.constructor.Name}
           </td>
-          <td>{'    '}</td>
-          <td>
-            <a href={`${this.props.constructor.url}`}>
-              <img
-                className="rivalTeam"
-                alt=""
-                src={`${this.imagePicker(
-                  this.props.constructor.constructorId,
-                  'https://www.f1fantasytracker.com/Images/Constructors/AlphaTauriIcon.jpg'
-                )}`}
-              />
-            </a>
-          </td>
-          <td>{this.props.constructor.Name}</td>
           <td>{this.props.ranking.points}</td>
         </tr>
       </>

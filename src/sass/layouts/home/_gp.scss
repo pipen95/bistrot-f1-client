@@ -17,13 +17,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
-  grid-template-areas:
-    'Podium Table'
-    'Cta Cta';
+  grid-template-areas: 'Podium Table';
 }
 .Table {
   grid-area: Table;
-}
-.Cta {
-  grid-area: Cta;
 }

@@ -50,21 +50,13 @@ class Table extends Component {
               <tr>
                 <th>Pos</th>
                 <th></th>
-                <th>Name</th>
-                <th>Country</th>
-                <th>{'    '}</th>
-                <th></th>
-                <th>Team</th>
-                <th>Pts</th>
+                <th className="text-left">Name</th>
+                <th className="text-left">Team</th>
+                <th className="text-left">Pts</th>
               </tr>
             </thead>
             <tbody>{driversItems}</tbody>
           </table>
-        </div>
-        <div className="Cta center u-margin-top-small u-margin-bottom-small">
-          <a href="#" className="btn-text nowrap">
-            View all drivers stats →
-          </a>
         </div>
       </>
     );

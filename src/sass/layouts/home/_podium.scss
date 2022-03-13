@@ -1,11 +1,24 @@
 .Podium {
   grid-area: Podium;
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+  grid-gap: 2rem 0;
+  grid-template-areas:
+    'Top3'
+    'Cta';
+}
+
+.Top3 {
+  grid-area: Top3;
   position: relative;
-  width: 100%;
+}
+
+.Cta {
+  grid-area: Cta;
 }
 
 .homedriverImage {
-  height: 70%;
+  height: 200px;
   width: auto;
   position: absolute;
   bottom: 0;
