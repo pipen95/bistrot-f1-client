@@ -1,12 +1,7 @@
 .Podium {
   grid-area: Podium;
   position: relative;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto;
-  grid-template-areas:
-    'Podium Table'
-    'Cta Cta';
+  width: 100%;
 }
 
 .homedriverImage {
@@ -14,4 +9,42 @@
   width: auto;
   position: absolute;
   bottom: 0;
+}
+
+.topscorerboxwrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  width: 80%;
+  margin: auto;
+  height: 100%;
+}
+
+.mainPoints {
+  font-family: 'Gilroy-Bold', sans-serif;
+  font-size: 34px;
+  color: white;
+  line-height: 1;
+}
+
+.topscorerbox {
+  width: 100px;
+  height: 60px;
+  background-color: #393a49;
+  border-radius: 6px;
+  position: relative;
+  top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+  z-index: 7;
+}
+
+#biggestFigure {
+  z-index: 6;
+  width: 120px;
+  height: 80px;
 }

@@ -11,27 +11,51 @@ function Podium({ data }) {
             <p>{driver.Driver.GivenName}</p>
           </div>
         ))} */}
+      <div className="topscorerimgwrapper">
+        <div>
+          <img
+            style={{ height: '75%', left: '8%' }}
+            className="homedriverImage"
+            alt=""
+            src="https://res.cloudinary.com/f1-fantasy-tracker/image/upload/f_auto/v1618736029/FullBody/HamiltonFull.png"
+          />
+        </div>
 
-      <img
-        style={{ left: '13%', height: '75%' }}
-        className="homedriverImage"
-        alt=""
-        src="https://res.cloudinary.com/f1-fantasy-tracker/image/upload/f_auto/v1618736029/FullBody/HamiltonFull.png"
-      />
+        <div>
+          <img
+            style={{ left: '31%', height: '85%', zIndex: '6' }}
+            className="homedriverImage"
+            alt=""
+            src="https://res.cloudinary.com/f1-fantasy-tracker/image/upload/f_auto/v1618736029/FullBody/VerstappenFull.png"
+          />
+        </div>
 
-      <img
-        style={{ left: '35%', zIndex: 5, height: '80%' }}
-        className="homedriverImage"
-        alt=""
-        src="https://res.cloudinary.com/f1-fantasy-tracker/image/upload/f_auto/v1618736029/FullBody/VerstappenFull.png"
-      />
-
-      <img
-        style={{ right: '13%' }}
-        className="homedriverImage"
-        alt=""
-        src="https://res.cloudinary.com/f1-fantasy-tracker/image/upload/f_auto/v1618736029/FullBody/BottasFull.png"
-      />
+        <div>
+          <img
+            style={{ right: '8%' }}
+            className="homedriverImage"
+            alt=""
+            src="https://res.cloudinary.com/f1-fantasy-tracker/image/upload/f_auto/v1618736029/FullBody/BottasFull.png"
+          />
+        </div>
+      </div>
+      <div className="topscorerboxwrapper">
+        <div className="topscorerbox">
+          <div className="mainPoints" id="HighDriPoints2">
+            0
+          </div>
+        </div>
+        <div className="topscorerbox" id="biggestFigure">
+          <div className="mainPoints" id="HighDriPoints1">
+            0
+          </div>
+        </div>
+        <div className="topscorerbox">
+          <div className="mainPoints" id="HighDriPoints3">
+            0
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
